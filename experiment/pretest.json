@@ -2,37 +2,71 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Fracture toughness primarily measures resistance to:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Plastic deformation",
+        "b": "Crack growth",
+        "c": "Hardness",
+        "d": "Elastic strain"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "Toughness quantifies resistance to crack propagation.",
+        "c": "",
+        "d": ""
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Cracks in a Vickers indentation typically initiate at the:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Center",
+        "b": "Edges",
+        "c": "Corners",
+        "d": "Surface defects"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "Stress concentration is highest at indentation corners.",
+        "d": ""
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Ceramics generally fail by:",
+      "answers": {
+        "a": "Necking",
+        "b": "Yielding",
+        "c": "Brittle fracture",
+        "d": "Creep"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "Ceramics exhibit minimal plastic deformation before failure.",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Longer indentation cracks indicate:",
+      "answers": {
+        "a": "Higher toughness",
+        "b": "Lower toughness",
+        "c": "Higher modulus",
+        "d": "Higher hardness"
+      },
+      "explanations": {
+        "a": "",
+        "b": "Longer cracks reflect easier crack propagation.",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]

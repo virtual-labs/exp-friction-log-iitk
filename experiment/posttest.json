@@ -2,35 +2,69 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "If crack length doubles, will:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Increase",
+        "b": "Decrease",
+        "c": "Remain constant",
+        "d": "Double"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>",
+        "c": "",
+        "d": ""
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Increasing hardness primarily leads to:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Larger cracks",
+        "b": "Reduced plastic zone",
+        "c": "Higher applied load",
+        "d": "Lower modulus"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "Higher hardness limits plastic deformation and crack growth.",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The indentation fracture method is most suitable for:",
+      "answers": {
+        "a": "Polymers",
+        "b": "Liquids",
+        "c": "Brittle ceramics",
+        "d": "Elastomers"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "Well-defined cracks form mainly in brittle materials.",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Poor surface polishing mainly affects:",
+      "answers": {
+        "a": "Load magnitude",
+        "b": "Indenter geometry",
+        "c": "Crack length measurement",
+        "d": "Elastic modulus"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "Surface roughness reduces crack visibility and accuracy.",
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

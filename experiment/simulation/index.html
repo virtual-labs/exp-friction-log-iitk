@@ -1,13 +1,614 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<html lang="en">
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Lab Experiment</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1>Fracture Toughness of Ceramics</h1>
+      <p>Material Testing laboratory</p>
+    </div>
+    <div class="header-actions">
+      <button class="procedure-btn" onclick="openProcedure()">Procedure</button>
+      <button class="reset-btn" onclick="resetExperiment()">Reset</button>
+    </div>
+  </header>
+
+  <!-- Procedure Modal -->
+  <div class="overlay" id="procedure">
+    <div class="modal">
+      <div class="modal-top">
+        <h2>Experiment Procedure</h2>
+        <span onclick="closeProcedure()">✕</span>
+      </div>
+      <ol>
+  <li>Select the material for testing.</li>
+  <li>Enter the indentation load and dwell time, then click <b>Submit</b>.</li>
+  <li>Open the 2D view and click <b>Indent</b> to start the virtual indentation.</li>
+  <li>Observe crack formation in Top View and 3D View.</li>
+  <li>Use <b>Measure Crack Length</b> to view crack images and length table.</li>
+  <li>Check the <b>Result</b> and <b>Conclusion</b> for final toughness values.</li>
+</ol>
+
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="workspace">
+
+    <!-- Controls -->
+    <aside class="controls">
+      <h3>Control Panel</h3>
+
+     <!-- MATERIAL SELECTION -->
+<button class="primary" id="materialsBtn" onclick="showMaterialOptions()">
+  Materials
+</button>
+
+<div id="materialOptions" class="material-box" style="display:none;">
+  <h4>Select Material</h4>
+
+  <label class="mat-option">
+    <input type="radio" name="material" value="Mild Steel" id="mildRadio" onclick="materialSelected()">
+    Hafnium diboride (HfB₂)
+  </label>
+</div>
+
+<button class="primary" id="performIndentBtn" onclick="showIndentPanel()" style="display:none;">
+  Perform Vickers Indentation Test
+</button>
+
+
+      <div id="indentPanel" class="indent-panel">
+
+        <div class="input-row">
+          <label>Force</label>
+          <div class="input-unit">
+            <input type="number" id="forceInput" step="0.1" min="0.1" max="10">
+            <span>kg</span>
+          </div>
+          <div class="range">Range: 0.5kg - 2kg</div>
+        </div>
+
+        <div class="input-row">
+          <label>Holding Time</label>
+          <div class="input-unit">
+            <input type="number" id="timeInput" step="1" min="0">
+            <span>s</span>
+          </div>
+
+          <div class="range">Range: 0sec - 10sec</div>
+        </div>
+        <button id="submitIndent" class="primary" disabled onclick="submitIndent()">
+          Submit
+        </button>
+
+      </div>
+
+      <button class="primary" id='dis2d' onclick="display2d()">Two-Dimentional View</button>
+      <button class="primary" id="indent" onclick="movedown()">Indent</button>
+
+      <button class="primary" id="measureCrackBtn" onclick="openCrackMeasure()" style="display:none;">
+  Measure Crack Length
+</button>
+
+      <!-- <button class="primary" id="reset" onclick="moveup('./base2-1.png')">Remove load</button> -->
+       
+       <!-- <button  class="primary" id="topindentbtn" onclick="startFrameAnimationOnce()">View Indentation From Top</button> -->
+      <!-- <button class="primary" id="display3d" onclick="display3d()">Three Dimentional View</button> -->
+      <button class="primary" id="formula" onclick="showformula()">Formulae Used</button>
+
+      <button class="primary" id="resultBtn" onclick="showResult()" >
+  Result
+</button>
+
+<button class="primary" id="conclusionBtn" onclick="showConclusion()" >
+  Conclusion
+</button>
+
+
+
+
+
+
+
+
+      <!-- ================= TEST PARAMETERS BLOCK TABLE ================= -->
+      <!-- <div class="parameter-block">
+  
+  <h3 class="param-title">Test Parameters</h3>
+
+  <div class="param-grid">
+    <div class="param-row">
+      <span class="param-label">Strain Rate</span>
+      <span class="param-value">0.05 s⁻¹</span>
+    </div>
+
+    <div class="param-row">
+      <span class="param-label">Load Rate</span>
+      <span class="param-value">0.2 mN/s</span>
+    </div>
+
+    <div class="param-row">
+      <span class="param-label">Displacement Rate</span>
+      <span class="param-value">10 nm/s</span>
+    </div>
+
+    <div class="param-row">
+      <span class="param-label">Thermal Drift</span>
+      <span class="param-value">≤ 0.05 nm/s</span>
+    </div>
+  </div>
+</div> -->
+
+    </aside>
+
+
+
+    <!-- Simulation Area -->
+    <section class="simulation">
+
+      <div class="sim-upper">
+        <h3>Simulation Area</h3>
+        <div class="placeholder">
+          <div id="infoBox">Move the mouse pointer on the images to see the details</div>
+          <h1 id="heading">Machine Over View</h1>
+          <div class="svg-container">
+
+
+            <div class="innersvg">
+              <svg width="980" height="720" viewBox="0 0 980 720" xmlns="http://www.w3.org/2000/svg">
+
+                <defs>
+                  <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#e0e0e0" />
+                  </marker>
+
+                  <linearGradient id="powderSteel" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3a3a3a" />
+                    <stop offset="100%" stop-color="#141414" />
+                  </linearGradient>
+
+                  <linearGradient id="anodizedAl" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#8f8f8f" />
+                    <stop offset="30%" stop-color="#cfcfcf" />
+                    <stop offset="50%" stop-color="#b5b5b5" />
+                    <stop offset="70%" stop-color="#d8d8d8" />
+                    <stop offset="100%" stop-color="#8a8a8a" />
+                  </linearGradient>
+
+                  <linearGradient id="stainless" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f2f2f2" />
+                    <stop offset="50%" stop-color="#bdbdbd" />
+                    <stop offset="100%" stop-color="#eeeeee" />
+                  </linearGradient>
+
+                  <linearGradient id="opticalGlass" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+                    <stop offset="50%" stop-color="#90caf9" stop-opacity="0.10" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0.05" />
+                  </linearGradient>
+
+                  <linearGradient id="diamondTip" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f5f5f5" />
+                    <stop offset="50%" stop-color="#cfd8dc" />
+                    <stop offset="100%" stop-color="#ffffff" />
+                  </linearGradient>
+
+                  <linearGradient id="stageAl" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#9e9e9e" />
+                    <stop offset="50%" stop-color="#d6d6d6" />
+                    <stop offset="100%" stop-color="#9e9e9e" />
+                  </linearGradient>
+
+                  <linearGradient id="sampleMat" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c49a6c" />
+                    <stop offset="100%" stop-color="#8d6e63" />
+                  </linearGradient>
+                </defs>
+
+                <rect x="160" y="130" width="660" height="460" fill="url(#powderSteel)" stroke="#1c1c1c"
+                  stroke-width="4" />
+
+                <rect x="170" y="170" width="170" height="380" fill="url(#opticalGlass)" stroke="#3a3a3a" />
+                <rect x="650" y="170" width="170" height="380" fill="url(#opticalGlass)" stroke="#3a3a3a" />
+
+                <rect x="360" y="180" width="260" height="380" fill="#121212" />
+
+                <rect x="380" y="180" width="220" height="22" fill="url(#anodizedAl)" stroke="#6d6d6d" />
+
+                <rect x="425" y="202" width="70" height="48" fill="url(#anodizedAl)" stroke="#7a7a7a" />
+
+                <rect x="447" y="250" width="16" height="170" fill="url(#stainless)" />
+
+                <rect x="437" y="420" width="36" height="14" fill="url(#anodizedAl)" />
+
+                <svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+
+                  <defs>
+                    <linearGradient id="diamondTip" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#00f" />
+                      <stop offset="100%" stop-color="#0ff" />
+                    </linearGradient>
+                  </defs>
+
+                  <polygon points="455,434 447,470 463,470" fill="url(#diamondTip)" transform="rotate(180 455 452)" />
+                </svg>
+
+
+                <rect x="560" y="202" width="16" height="55" fill="url(#anodizedAl)" />
+
+                <rect x="545" y="257" width="110" height="70" fill="url(#anodizedAl)" stroke="#5f5f5f" />
+
+                <rect x="585" y="327" width="32" height="75" fill="url(#stainless)" />
+
+                <circle cx="601" cy="410" r="20" fill="url(#anodizedAl)" stroke="#5f5f5f" />
+
+                <rect x="593" y="430" width="16" height="48" fill="#6d6d6d" />
+
+                <circle cx="601" cy="486" r="8" fill="#1c1c1c" />
+                <circle cx="601" cy="486" r="4" fill="#4fc3f7" opacity="0.5" />
+
+                <rect x="395" y="500" width="190" height="26" fill="url(#stageAl)" />
+
+                <rect x="430" y="526" width="120" height="18" fill="#8c8c8c" />
+
+                <rect x="450" y="488" width="80" height="10" fill="url(#sampleMat)" />
+
+                <line x1="820" y1="160" x2="780" y2="200" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="830" y="155" fill="#ffffff" font-size="13">Protective Enclosure</text>
+
+                <line x1="460" y1="180" x2="460" y2="202" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="460" y="165" text-anchor="middle" fill="#ffffff" font-size="13">Indenter Head</text>
+
+                <line x1="520" y1="470" x2="463" y2="460" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="525" y="475" fill="#ffffff" font-size="13">Berkovich Indenter</text>
+
+                <line x1="720" y1="300" x2="655" y2="290" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="725" y="300" fill="#ffffff" font-size="13">Optical Microscope</text>
+
+                <line x1="520" y1="560" x2="520" y2="526" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="520" y="585" text-anchor="middle" fill="#ffffff" font-size="13">Sample Stage</text>
+
+                <line x1="360" y1="488" x2="450" y2="492" stroke="#ffffff" marker-end="url(#arrow)" />
+                <text x="300" y="488" fill="#ffffff" font-size="13">Sample</text>
+
+              </svg>
+
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div class="sim-lower">
+        <h3>Observations</h3>
+
+        <div class="parameter-block">
+          <h3 class="param-title">Test Parameters</h3>
+
+          <div class="param-row-horizontal">
+
+            <div class="param-cell">
+              <span class="param-label">Strain Rate</span>
+              <span class="param-value">0.05 s⁻¹</span>
+            </div>
+
+            <div class="param-cell">
+              <span class="param-label">Load Rate</span>
+              <span class="param-value">0.2 mN/s</span>
+            </div>
+
+            <div class="param-cell">
+              <span class="param-label">Displacement Rate</span>
+              <span class="param-value">10 nm/s</span>
+            </div>
+
+            <div class="param-cell">
+              <span class="param-label">Thermal Drift</span>
+              <span class="param-value">≤ 0.05 nm/s</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Formula Popup -->
+<div id="formulaModal" class="formula-modal">
+  <div class="formula-box">
+
+    <span class="close-btn" onclick="closeFormula()">✖</span>
+
+    <h3>Fracture Toughness Formula</h3>
+
+    <div class="formula-content">
+
+      <!-- Main Equation -->
+      <div class="formula-equation-box">
+        K<sub>IC</sub> = 0.016 
+        <span class="frac">
+          <span class="top">(E/H)<sup>1/2</sup></span>
+          <span class="bottom"></span>
+        </span>
+        · 
+        <span class="frac">
+          <span class="top">P</span>
+          <span class="bottom">c<sup>3/2</sup></span>
+        </span>
+      </div>
+
+      <br>
+
+      <p><b>Where,</b></p>
+
+      <ul class="formula-list">
+        <li><b>K<sub>IC</sub></b> – fracture toughness (MPa√m)</li>
+        <li><b>E</b> – elastic modulus (GPa)</li>
+        <li><b>H</b> – hardness (GPa)</li>
+        <li><b>P</b> – applied load (N)</li>
+        <li><b>c</b> – crack length from indentation center to crack tip (m)</li>
+        <li><b>0.016</b> – empirical calibration constant</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Startup Popup -->
+  <!-- <div id="startupOverlay" class="startup-overlay">
+    <div class="startup-modal">
+      <h2>Do you know about "How to Calibrate the Machine and Place the sample under Indenter"</h2>
+      <p>Please Select Yes or No</p>
+
+      <form id="startupForm">
+        <label class="option">
+          <input type="radio" name="choice" value="page" required>
+          Yes I Know
+        </label>
+
+        <label class="option">
+          <input type="radio" name="choice" value="youtube">
+          No, I want to know
+        </label>
+
+        <button type="submit" id="Popupbtn" class="primary">Submit</button>
+      </form>
+    </div>
+  </div> -->
+
+
+
+
+
+
+<!-- RESULT POPUP -->
+<div id="resultModal" class="formula-modal result-modal">
+  <div class="formula-box result-box">
+
+    <span class="close-btn" onclick="closeResult()">✖</span>
+    <h3>Fracture Toughness Results</h3>
+
+    <!-- SLIDES CONTAINER -->
+    <div id="resultSlides" class="result-slides">
+
+      <!-- ========== SLIDE 1: IMAGE ========== -->
+      <div class="slide active">
+  <img src="res.png" class="result-image" alt="SEM Indentation Image">
+
+  <button class="result-next-btn" onclick="nextSlide()">▶ Show Result Table</button>
+</div>
+
+
+      <!-- ========== SLIDE 2: MATERIAL PROPERTIES TABLE ========== -->
+      <div class="slide">
+        <h4>Material Properties Used for Calculation</h4>
+        <table class="result-table">
+          <tr>
+            <th>Property</th>
+            <th>Symbol</th>
+            <th>Typical Value Used</th>
+            <th>Unit</th>
+          </tr>
+          <tr>
+            <td>Elastic modulus</td>
+            <td>E</td>
+            <td>500</td>
+            <td>GPa</td>
+          </tr>
+          <tr>
+            <td>Hardness</td>
+            <td>H</td>
+            <td>25</td>
+            <td>GPa</td>
+          </tr>
+        </table>
+
+        <button class="result-nav-btn back-btn" onclick="prevSlide()">◀ Back</button>
+  <button class="result-nav-btn" onclick="nextSlide()">Next ▶</button>
+      </div>
+
+      <!-- ========== SLIDE 3: CRACK LENGTH TABLE ========== -->
+      <div class="slide">
+        <h4>Measured Crack Lengths & Calculated Toughness</h4>
+        <p class="formula-eqn">K<sub>IC</sub> = 0.016 (E/H)<sup>1/2</sup> · P / c<sup>3/2</sup></p>
+        
+        <table class="result-table">
+          <tr>
+            <th>Crack</th>
+            <th>Crack length c (µm)</th>
+            <th>c (m)</th>
+            <th>K<sub>IC</sub> (MPa√m)</th>
+          </tr>
+          <tr><td>1</td><td>58</td><td>5.8×10⁻⁵</td><td>4.5</td></tr>
+          <tr><td>2</td><td>60</td><td>6.0×10⁻⁵</td><td>4.3</td></tr>
+          <tr><td>3</td><td>59</td><td>5.9×10⁻⁵</td><td>4.4</td></tr>
+          <tr><td>4</td><td>59</td><td>5.9×10⁻⁵</td><td>4.4</td></tr>
+        </table>
+
+       <button class="result-nav-btn back-btn" onclick="prevSlide()">◀ Back</button>
+  <button class="result-nav-btn" onclick="nextSlide()">Next ▶</button>
+      </div>
+
+      <!-- ========== SLIDE 4: FINAL RESULT TABLE ========== -->
+      <div class="slide">
+        <h4>Final Fracture Toughness Result</h4>
+
+        <table class="result-table">
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>Average crack length c<sub>avg</sub></td>
+            <td>59 µm</td>
+          </tr>
+          <tr>
+            <td>Mean fracture toughness K<sub>IC</sub></td>
+            <td>≈ 4.4 MPa√m</td>
+          </tr>
+        </table>
+
+        <button class="result-nav-btn" onclick="prevSlide()">◀ Back</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CONCLUSION POPUP -->
+<div id="conclusionModal" class="formula-modal conclusion-modal">
+  <div class="formula-box conclusion-box">
+
+    <span class="close-btn" onclick="closeConclusion()">✖</span>
+    <h3>Conclusion</h3>
+
+    <div class="conclusion-content">
+      <p>
+        The Vickers indentation produced clear and symmetric radial–median cracks at the corners of each
+        impression, allowing accurate crack-length measurement and reliable use of the Anstis equation.
+      </p>
+
+      <p>
+        Using the measured crack lengths (~63–67 µm) along with the elastic modulus and hardness of HfB₂,
+        the average fracture toughness was calculated to be ≈ 3.8 MPa√m, matching expected dense ceramic behavior.
+      </p>
+
+      <p>
+        Since higher fracture toughness suppresses crack initiation and growth under contact loading,
+        the measured K<sub>IC</sub> indicates improved resistance to microcracking and chipping,
+        implying superior wear performance.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CRACK MEASUREMENT POPUP -->
+<div id="crackMeasureModal" class="formula-modal">
+  <div class="formula-box result-box">
+
+    <span class="close-btn" onclick="closeCrackMeasure()">✖</span>
+    <h3>Crack Length Measurement</h3>
+
+    <!-- SLIDES -->
+    <div id="crackSlides" class="result-slides">
+
+      <!-- ========== SLIDE 0 : IMAGE SEQUENCE ========== -->
+      <div class="slide active" id="crackImgSlide" style="text-align:center;">
+        <img id="crackSeqImg" src="img1.png" class="result-image" 
+             style="width:85%; border:2px solid #777; border-radius:6px;">
+
+        <button class="result-nav-btn" id="crackImgNextBtn" 
+                onclick="openCrackTableSlide()" 
+                style="margin-top:12px; display:none;">
+          ▶ Show Measured Table
+        </button>
+      </div>
+
+      <!-- ========== SLIDE 1 : TABLE ========== -->
+      <div class="slide" id="crackTableSlide">
+        <h4>Measured Crack Lengths & Calculated Toughness</h4>
+
+        <table class="result-table">
+          <tr>
+            <th>Crack</th>
+            <th>Crack length c (µm)</th>
+            <th>c (m)</th>
+            <th>K<sub>IC</sub> (MPa√m)</th>
+          </tr>
+          <tr><td>1</td><td>58</td><td>5.8×10⁻⁵</td><td>4.5</td></tr>
+          <tr><td>2</td><td>60</td><td>6.0×10⁻⁵</td><td>4.3</td></tr>
+          <tr><td>3</td><td>59</td><td>5.9×10⁻⁵</td><td>4.4</td></tr>
+          <tr><td>4</td><td>59</td><td>5.9×10⁻⁵</td><td>4.4</td></tr>
+        </table>
+
+        <button class="result-nav-btn back-btn" onclick="showCrackSlide(0)">◀ Back</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <script src="./js/main.js"></script>
+
+
+
+
+
+
+
 </body>
+
 </html>

@@ -1,0 +1,1053 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #eef2f7;
+ 
+}
+
+/* Header */
+.header {
+  height: 70px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+
+
+.header h1 {
+  font-size: 20px;
+}
+
+.header p {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.procedure-btn {
+  background: white;
+  color: #1e40af;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Reset button (secondary) */
+.reset-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.8);
+  padding: 9px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.reset-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+
+/* Modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
+}
+
+.modal {
+  width: 480px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.modal-top span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Workspace */
+.workspace {
+  display: flex;
+  min-height: calc(100vh - 70px); /* allows page to grow */
+}
+
+
+/* Controls */
+.controls {
+  width: 230px;
+  background: #ffffff;
+  padding: 40px;
+  border-right: 1px solid #dbe1ea;
+  height: fit-content;
+}
+
+.controls h3 {
+  margin-bottom: 15px;
+}
+
+.controls button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #f1f5f9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.controls .primary {
+  background: #2563eb;
+  color: white;
+}
+.primary:disabled{
+  background: #fbe6e6;
+}
+/* Simulation */
+.simulation {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 200px;
+}
+.controls,
+.sim-upper,
+.sim-lower {
+  flex-shrink: 0;
+}
+
+
+#infoBox {
+  position: absolute;
+  top: 90%;
+  left: 2%;
+  width: fit-content;
+  padding: 10px 14px;
+  background: rgba(177, 174, 174, 0.469);
+  color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  /* display: none; */
+  z-index: 9999;
+}
+
+
+svg image {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.sim-upper {
+  flex: 3;
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+
+}
+.sim-upper {
+  min-height: 70%; /* adjust if needed */
+}
+
+.placeholder #heading{
+    color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0);
+    top: 1%;
+    left: 40%;
+    transform: translate(50% ,50);
+    font-size: 20px;
+    font-family:'Segoe UI', sans-serif;
+    font-weight: 600;
+}
+
+.placeholder {
+  height: 90%;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: rgb(79, 133, 160);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.svg-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;   /* 🔑 stops expansion */
+  position: relative;
+}
+.display3dview {
+  position: absolute;
+  
+  height: 100%;
+  right:20%;
+}
+.innersvg{
+  height: 85%;
+  width: 85%;
+  max-height: 800px;
+  left: 12%;
+  top: 10%;
+  position:relative;
+}
+.innersvg svg{
+  height: 100%;
+  width: 100%;
+}
+.display3dview svg {
+    pointer-events: all;
+  height: 110%;
+  width: 110%;
+    pointer-events: all;
+  cursor: pointer;
+  display: block;
+}
+
+
+.responsive-svg {
+  height: 100%;
+  width: auto;        /* keeps aspect ratio */
+  max-width: 100%;
+}
+
+.svg-container .pointer{
+  position: absolute;
+  z-index: 200;
+  top: 15%;
+    right: 51%;
+  
+  transform: translateY(0);
+  transition: transform 5s linear;
+  will-change: transform;
+}
+.svg-container .svg-base{
+  position: absolute;
+  z-index: 100;
+  top: 40%;
+  right: 50%;
+}
+.graph  {
+  height: 250px;
+  margin: 1px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  width: 250px;
+  background: white;
+  position: absolute;
+  min-height: 200px;
+  min-width: 200px;
+top: 5%;
+  right: 5%;
+  z-index: 500;
+}
+.svg-container svg {
+    pointer-events: all;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.display3dview{
+  height: 100%;
+  width: 100%;
+}
+.sim-lower {
+  flex: 1;
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+   /* 🔑 enables vertical scroll */
+}
+
+
+
+/* ============================= */
+/* RESPONSIVE LAYER – SAFE MODE  */
+/* ============================= */
+
+/* Tablets & below */
+@media (max-width: 1024px) {
+
+  .workspace {
+    flex-direction: column;
+  }
+
+  .controls {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dbe1ea;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .controls h3 {
+    width: 100%;
+  }
+
+  .controls button {
+    width: calc(50% - 10px);
+  }
+
+  .simulation {
+    padding: 15px;
+  }
+
+  .svg-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .graph {
+    position: relative;
+    right: auto;
+    margin: 20px auto;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+
+  /* Header */
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Controls */
+  .controls {
+    flex-direction: column;
+  }
+
+  .controls button {
+    width: 100%;
+  }
+
+  /* Simulation blocks */
+  .sim-upper,
+  .sim-lower {
+    padding: 15px;
+  }
+
+  .placeholder {
+    height: auto;
+    min-height: 250px;
+  }
+
+  /* SVG handling */
+  .svg-container {
+    margin: 15px auto;
+    width: 100%;
+    height: 250px;
+  }
+
+  .svg-container svg {
+      pointer-events: all;
+  cursor: pointer;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Graph */
+  .graph {
+    width: 90%;
+    top: 50%;
+    right: 0%;
+    position: fixed;
+    min-width: unset;
+  }
+
+  /* Modal */
+  .modal {
+    width: 90%;
+  }
+
+  /* Heading inside placeholder */
+  .placeholder #heading {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+  }
+}
+
+
+
+
+/* ================= PARAMETER BLOCK ================= */
+/* Main container */
+.parameter-block {
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    background: #2563eb;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Title */
+.param-title {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+/* Horizontal row */
+.param-row-horizontal {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-wrap: wrap; /* responsive */
+}
+
+/* Each block */
+.param-cell {
+    flex: 1;
+    min-width: 150px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Label */
+.param-label {
+    display: block;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+/* Value */
+.param-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modal Background */
+.formula-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup Box */
+.formula-box {
+  background: #f8fbff;
+  width: 420px;
+  max-width: 90%;
+  padding: 20px 24px;
+  border-radius: 14px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  animation: scaleIn 0.25s ease;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+.close-btn:hover {
+  color: #e11d48;
+}
+
+/* Title */
+.formula-box h3 {
+  margin-bottom: 14px;
+  color: #1e293b;
+}
+
+/* Content */
+.formula-content p {
+  font-size: 14px;
+  margin: 6px 0;
+  color: #334155;
+}
+
+/* Formula Styling */
+.formula {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+/* Fraction Styling */
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+.frac span:first-child {
+  border-bottom: 1px solid #000;
+  padding: 0 4px;
+}
+
+/* Animation */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* this is the code for crrack */
+
+
+.crack{
+height: 70%;
+    width: 20%;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    margin: 15px;
+    padding: 10px;
+    left: 50%;
+    top: 12%;
+    border-radius: 10px;
+    border: 1px solid black;
+     /* display: none; */
+}
+
+.crack h1{
+  text-align: center;
+  font-size: 5px;
+  font-weight: 600;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+}
+
+
+.crack .img{
+
+  height: 500px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 600px;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+  transform: translate(1px, 1px);
+}
+.crack .img img{
+  
+  height: auto;
+  display: block;
+    object-fit: contain;
+  width: 90%;
+  transform: scale(1.9);   /* 2 = double size */
+  
+  image-rendering: auto;
+  will-change: contents;
+}
+
+
+/* Startup Overlay */
+.startup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup Box */
+.startup-modal {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.startup-modal h2 {
+  margin-bottom: 10px;
+}
+
+.startup-modal p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Options */
+.option {
+  display: block;
+  text-align: left;
+  margin-bottom: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.option input {
+  margin-right: 8px;
+}
+
+
+.input-row .range{
+  font-size: 2vh;
+  font-weight: 700;
+  font:bold;
+  white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.indent-panel {
+  margin-top: 10px;
+  padding: 9px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: none;
+}
+
+.input-row {
+  margin-bottom: 12px;
+}
+
+.input-unit {
+  display: flex;
+  align-items: center;
+}
+
+.input-unit input {
+  flex: 1;
+  padding: 2px;
+  width: 5px;
+}
+
+.input-unit span {
+  margin-left: 6px;
+  font-weight: bold;
+}
+
+#submitIndent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+#Popupbtn{
+  background: linear-gradient(to right ,rgb(25, 66, 215) ,rgb(11, 106, 213));
+  border:2px solid royalblue;
+  font: uppercase;
+  color: white;
+  padding: 10px 10px;
+  font-size: 15px;
+  border-radius: 10px ;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Center everything inside formula box */
+.formula-content {
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Center formulas and align fractions properly */
+.formula {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+/* Proper fraction styling */
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+  vertical-align: middle;
+}
+
+.frac span {
+  padding: 0 4px;
+}
+
+.frac .top {
+  border-bottom: 2px solid #000;
+  padding-bottom: 3px;
+}
+
+.frac .bottom {
+  padding-top: 3px;
+}
+
+/* Subscript fix */
+sub {
+  font-size: 70%;
+  vertical-align: -0.3em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RESULT POPUP — High Contrast Beautiful Theme */
+.result-modal .result-box {
+  background: #c6d4f5;
+  color: #000000;
+  border: 2px solid #3c3f4a;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* Table Look */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #899dcc;
+  border: 1px solid #444b57;
+  font-size: 16px;
+  color: #000000;
+}
+
+.result-table th {
+  background: #899dcc;
+  padding: 10px;
+  border: 1px solid #4d5566;
+  color: #000000;
+  font-weight: 600;
+}
+
+.result-table td {
+  padding: 10px 14px;
+  border: 1px solid #4d5566;
+  background: #899dcc;
+}
+
+.result-table tr:nth-child(even) td {
+  background: #899dcc;
+}
+
+/* Slide Controls */
+.result-slides .slide {
+  display: none;
+}
+
+.result-slides .active {
+  display: block;
+}
+
+.result-nav-btn,
+.result-next-btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: #4c8bf5;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px;
+  display: inline-block;
+}
+
+.result-nav-btn:hover,
+.result-next-btn:hover {
+  background: #3b73d4;
+}
+
+.back-btn {
+  background: #5f6368;
+  margin-right: 10px;
+}
+
+.back-btn:hover {
+  background: #4b4f54;
+}
+
+/* Image */
+.result-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* CONCLUSION POPUP */
+.conclusion-modal .conclusion-box {
+  background: #ffffff;
+  color: #222;
+  border: 2px solid #d9d9d9;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.conclusion-content p {
+  background: #f7f9fc;
+  border-left: 5px solid #4a90e2;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.formula-equation-box {
+  background: #8b8b2f;
+  padding: 10px 20px;
+  color: black;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.formula-list {
+  list-style: disc;
+  margin-left: 25px;
+  color: #d0d09c;
+  font-size: 16px;
+}
+
+.formula-list li {
+  margin-bottom: 6px;
+  background: #8b8b2f;
+  padding: 3px 8px;
+  display: inline-block;
+  border-radius: 4px;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
