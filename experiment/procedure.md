@@ -28,9 +28,5 @@ Perform at least 5–10 indentations and report mean K<sub>IC</sub> with standar
 ## Implications
 The indentation crack length method provides a rapid and resource-efficient means of estimating fracture toughness when conventional fracture tests are impractical. It requires only small samples and standard hardness equipment, making it particularly useful for thin films, coatings, miniature components, and newly developed ceramics.
 
----
-
 ## Limitations
 The method provides approximate toughness values because it relies on semi-empirical constants and assumes ideal median crack geometries and homogeneous materials. Small measurement errors in crack length c significantly affect results due to the c<sup>3/2</sup> dependence.
-
----
