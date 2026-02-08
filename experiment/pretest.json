@@ -10,10 +10,10 @@
         "d": "Elastic strain"
       },
       "explanations": {
-        "a": "",
+        "a": "Toughness quantifies resistance to crack propagation.",
         "b": "Toughness quantifies resistance to crack propagation.",
-        "c": "",
-        "d": ""
+        "c": "Toughness quantifies resistance to crack propagation.",
+        "d": "Toughness quantifies resistance to crack propagation."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "Surface defects"
       },
       "explanations": {
-        "a": "",
-        "b": "",
+        "a": "Stress concentration is highest at indentation corners.",
+        "b": "Stress concentration is highest at indentation corners.",
         "c": "Stress concentration is highest at indentation corners.",
-        "d": ""
+        "d": "Stress concentration is highest at indentation corners."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "Creep"
       },
       "explanations": {
-        "a": "",
-        "b": "",
+        "a": "Ceramics exhibit minimal plastic deformation before failure.",
+        "b": "Ceramics exhibit minimal plastic deformation before failure.",
         "c": "Ceramics exhibit minimal plastic deformation before failure.",
-        "d": ""
+        "d": "Ceramics exhibit minimal plastic deformation before failure."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "Higher hardness"
       },
       "explanations": {
-        "a": "",
+        "a": "Longer cracks reflect easier crack propagation.",
         "b": "Longer cracks reflect easier crack propagation.",
-        "c": "",
-        "d": ""
+        "c": "Longer cracks reflect easier crack propagation.",
+        "d": "Longer cracks reflect easier crack propagation."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
