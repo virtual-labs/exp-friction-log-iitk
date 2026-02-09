@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "If crack length doubles, will:",
+      "question": "If crack length doubles, K<sub>IC</sub>will:",
       "answers": {
         "a": "Increase",
         "b": "Decrease",
