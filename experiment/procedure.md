@@ -1,4 +1,4 @@
-## Experimental Procedure
+
 ### Specimen Preparation
 Prepare a flat ceramic sample and polish the surface sequentially using finer abrasives followed by diamond paste polishing to obtain a mirror-like finish.
 
@@ -25,8 +25,12 @@ Perform at least 5–10 indentations and report mean K<sub>IC</sub> with standar
 **Figure 1:** (a) Pyramidal diamond tip Vickers indenter. (b), (c), and (d) show a schematic representation of the indentation process and cracks developed. The measurement of cracks is done using the optical/electron microscope.
 
 
-## Implications
-The indentation crack length method provides a rapid and resource-efficient means of estimating fracture toughness when conventional fracture tests are impractical. It requires only small samples and standard hardness equipment, making it particularly useful for thin films, coatings, miniature components, and newly developed ceramics.
+---
 
-## Limitations
-The method provides approximate toughness values because it relies on semi-empirical constants and assumes ideal median crack geometries and homogeneous materials. Small measurement errors in crack length c significantly affect results due to the c<sup>3/2</sup> dependence.
+## Essential Experimental Setup
+1. Vickers hardness tester – applies controlled load using a diamond pyramidal indenter
+2. Load control and dwell system – ensures reproducible loading/unloading conditions
+3. Polished specimen stage – provides a smooth, flat surface for symmetric crack formation
+5. Optical / SEM microscope – measures indentation diagonals and crack lengths accurately
+6. Data analysis system – computes hardness H and fracture toughness K<sub>IC</sub>
+
