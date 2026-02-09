@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "If crack length doubles, will:",
+      "question": "If crack length doubles, K<sub>IC</sub>will:",
       "answers": {
         "a": "Increase",
         "b": "Decrease",
@@ -10,10 +10,10 @@
         "d": "Double"
       },
       "explanations": {
-        "a": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>",
+        "a": "",
         "b": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>",
-        "c": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>",
-        "d": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>"
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "Lower modulus"
       },
       "explanations": {
-        "a": "Higher hardness limits plastic deformation and crack growth.",
+        "a": "",
         "b": "Higher hardness limits plastic deformation and crack growth.",
-        "c": "Higher hardness limits plastic deformation and crack growth.",
-        "d": "Higher hardness limits plastic deformation and crack growth."
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "Elastomers"
       },
       "explanations": {
-        "a": "Well-defined cracks form mainly in brittle materials.",
-        "b": "Well-defined cracks form mainly in brittle materials.",
+        "a": "",
+        "b": "",
         "c": "Well-defined cracks form mainly in brittle materials.",
-        "d": "Well-defined cracks form mainly in brittle materials."
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "Elastic modulus"
       },
       "explanations": {
-        "a": "Surface roughness reduces crack visibility and accuracy.",
-        "b": "Surface roughness reduces crack visibility and accuracy.",
+        "a": "",
+        "b": "",
         "c": "Surface roughness reduces crack visibility and accuracy.",
-        "d": "Surface roughness reduces crack visibility and accuracy."
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

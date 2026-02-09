@@ -1,32 +1,30 @@
-## Experimental Procedure
-### Specimen Preparation
-Prepare a flat ceramic sample and polish the surface sequentially using finer abrasives followed by diamond paste polishing to obtain a mirror-like finish.
+Essential Experimental Setup<br>
+<b>Core components</b><br>
+	<b>Vickers hardness tester</b> – applies controlled load using a diamond pyramidal indenter<br>
+	<b>Load control and dwell system</b> – ensures reproducible loading/unloading conditions<br>
+	<b>Polished specimen stage</b> – provides a smooth, flat surface for symmetric crack formation<br>
+	<b>Optical/SEM microscope</b> – measures indentation diagonals and crack lengths accurately<br>
+	<b>Data analysis software/calculator</b> – computes hardness and K<sub>IC</sub>
+<b>Experimental Procedure for Measuring Fracture Toughness (Vickers Indentation Method)</b><br>
+<b>Specimen Preparation</b><br>
+Prepare a flat ceramic sample and polish the surface sequentially using finer abrasives, followed by diamond paste polishing, to obtain a mirror-like finish. Ensure the surface is free from scratches, pores, and residual stresses, as these can influence crack formation.<br>
+<b>Indentation Loading</b>
+Mount the specimen securely on the Vickers hardness tester stage. Apply a controlled indentation load (e.g., 1 kgf ≈ 10 N) using the diamond pyramidal indenter (Figure 1). Maintain a constant dwell time of approximately 10 seconds to allow stable crack development, then unload gradually to minimize dynamic effects.<br>
+<b>Indent Selection</b>
+Produce multiple indents at well-spaced locations (at least 3–4 times the indentation diagonal apart) to avoid crack interaction. Select only those impressions showing clear and symmetric radial–median cracks at all four corners.<br>
+<b>Crack Measurement</b>
+Observe the indentation under an optical or scanning electron microscope (Figure 1d).<br>
+Measure:<br>
+	the average indentation diagonal (for hardness, if needed),<br>
+	the crack length c, defined as the distance from the center of the indent to each crack tip.<br>
+Take the average of the four crack lengths for accuracy.<br>
+<b>Property Inputs</b><br>
+Obtain the elastic modulus Eand hardness Hof the material from nano/microindentation measurements or literature values.<br>
+<b>Fracture Toughness Calculation</b><br>
+Substitute the measured values into the Anstis equation.<br>
+<b>Repeatability Check</b><br>
+Perform at least 5–10 indentations and report the average fracture toughness with standard deviation to ensure reliability.<br>
 
-### Indentation Loading
-Apply a controlled indentation load P ≈ 10 N with a dwell time of ~10 s.
 
-### Indent Selection
-Produce multiple indents at well-spaced locations and select only those impressions showing clear radial cracks.
-
-### Crack Measurement
-Measure crack length c from the center of the indent to each crack tip and calculate the average.
-
-### Property Inputs
-Obtain E and H from indentation measurements or literature.
-
-### Fracture Toughness Calculation
-Substitute values into the Anstis equation.
-
-### Repeatability Check
-Perform at least 5–10 indentations and report mean K<sub>IC</sub> with standard deviation.
-
-![alt text](image.png)
-
-**Figure 1:** (a) Pyramidal diamond tip Vickers indenter. (b), (c), and (d) show a schematic representation of the indentation process and cracks developed. The measurement of cracks is done using the optical/electron microscope.
-
-
-## Implications
-The indentation crack length method provides a rapid and resource-efficient means of estimating fracture toughness when conventional fracture tests are impractical. It requires only small samples and standard hardness equipment, making it particularly useful for thin films, coatings, miniature components, and newly developed ceramics.
-
-## Limitations
-The method provides approximate toughness values because it relies on semi-empirical constants and assumes ideal median crack geometries and homogeneous materials. Small measurement errors in crack length c significantly affect results due to the c<sup>3/2</sup> dependence.
+ 
+Figure 1: (a) Pyramidal diamond tip Vickers indenter. (b), (c), and (d) shows a schematic representation of the indentation process and cracks developed. The measurement of cracks is done using the optical/electron microscope.<br>
