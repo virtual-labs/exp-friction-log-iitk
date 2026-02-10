@@ -33,6 +33,6 @@ Substitute the measured values into the Anstis equation.<br>
 <b>Repeatability Check</b><br>
 Perform at least 5–10 indentations and report the average fracture toughness with standard deviation to ensure reliability.<br>
 
-<img src="images/Picture1.png" alt="Diamond Berkovich tip" width="500"><br>
+<image src=images/image1.png><br><br>
  
 Figure 1: (a) Pyramidal diamond tip Vickers indenter. (b), (c), and (d) shows a schematic representation of the indentation process and cracks developed. The measurement of cracks is done using the optical/electron microscope.<br>
