@@ -20,4 +20,4 @@
 
 SrNo | Name | Faculty or Student | Department| Institute | Email id
 :--|:--|:--|:--|:--|:--|
-1 | Harsh Dwivedi  | . | Materials Science and Engineering |IIT Kanpur| harshd@iitk.ac.in
+1 | Mr. Harsh Dwivedi | Staff | Material Science Engineering | Indian Institute of Technology, Kanpur | harshd@iitk.ac.in
