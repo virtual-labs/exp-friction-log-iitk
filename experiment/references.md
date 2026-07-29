@@ -1,1 +1,2 @@
-### Link your references in here
+•	M. Sebastiani, K.E. Johanns, E.G. Herbert, G.M. Pharr, Measurement of fracture toughness by nanoindentation methods: Recent advances and future challenges, Current Opinion in Solid State and Materials Science, Volume 19, Issue 6, 2015, Pages 324-333.<br>
+•	J.J. Kruzic, D.K. Kim, K.J. Koester, R.O. Ritchie, Indentation techniques for evaluating the fracture toughness of biomaterials and hard tissues, Journal of the Mechanical Behavior of Biomedical Materials, Volume 2, Issue 4, 2009, Pages 384-395
