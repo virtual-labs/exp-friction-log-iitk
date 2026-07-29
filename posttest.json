@@ -1,0 +1,73 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "If crack length doubles, K<sub>IC</sub>will:",
+      "answers": {
+        "a": "Increase",
+        "b": "Decrease",
+        "c": "Remain constant",
+        "d": "Double"
+      },
+      "explanations": {
+        "a": "",
+        "b": "K<sub>IC</sub> ∝ 1 / c<sup>3/2</sup>",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Increasing hardness primarily leads to:",
+      "answers": {
+        "a": "Larger cracks",
+        "b": "Reduced plastic zone",
+        "c": "Higher applied load",
+        "d": "Lower modulus"
+      },
+      "explanations": {
+        "a": "",
+        "b": "Higher hardness limits plastic deformation and crack growth.",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The indentation fracture method is most suitable for:",
+      "answers": {
+        "a": "Polymers",
+        "b": "Liquids",
+        "c": "Brittle ceramics",
+        "d": "Elastomers"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "Well-defined cracks form mainly in brittle materials.",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Poor surface polishing mainly affects:",
+      "answers": {
+        "a": "Load magnitude",
+        "b": "Indenter geometry",
+        "c": "Crack length measurement",
+        "d": "Elastic modulus"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "Surface roughness reduces crack visibility and accuracy.",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+  ]
+}
