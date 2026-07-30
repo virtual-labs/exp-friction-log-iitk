@@ -1,0 +1,132 @@
+<svg width="980" height="720" viewBox="0 0 980 720"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10"
+          refX="6" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 Z" fill="#e0e0e0"/>
+  </marker>
+
+  <linearGradient id="powderSteel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a3a3a"/>
+    <stop offset="100%" stop-color="#141414"/>
+  </linearGradient>
+
+  <linearGradient id="anodizedAl" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#8f8f8f"/>
+    <stop offset="30%" stop-color="#cfcfcf"/>
+    <stop offset="50%" stop-color="#b5b5b5"/>
+    <stop offset="70%" stop-color="#d8d8d8"/>
+    <stop offset="100%" stop-color="#8a8a8a"/>
+  </linearGradient>
+
+  <linearGradient id="stainless" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f2f2f2"/>
+    <stop offset="50%" stop-color="#bdbdbd"/>
+    <stop offset="100%" stop-color="#eeeeee"/>
+  </linearGradient>
+
+  <linearGradient id="opticalGlass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+    <stop offset="50%" stop-color="#90caf9" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.05"/>
+  </linearGradient>
+
+  <linearGradient id="diamondTip" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f5f5f5"/>
+    <stop offset="50%" stop-color="#cfd8dc"/>
+    <stop offset="100%" stop-color="#ffffff"/>
+  </linearGradient>
+
+  <linearGradient id="stageAl" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#9e9e9e"/>
+    <stop offset="50%" stop-color="#d6d6d6"/>
+    <stop offset="100%" stop-color="#9e9e9e"/>
+  </linearGradient>
+
+  <linearGradient id="sampleMat" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#c49a6c"/>
+    <stop offset="100%" stop-color="#8d6e63"/>
+  </linearGradient>
+</defs>
+
+<rect x="160" y="130" width="660" height="460"
+fill="url(#powderSteel)" stroke="#1c1c1c" stroke-width="4"/>
+
+<rect x="170" y="170" width="170" height="380"
+fill="url(#opticalGlass)" stroke="#3a3a3a"/>
+<rect x="650" y="170" width="170" height="380"
+fill="url(#opticalGlass)" stroke="#3a3a3a"/>
+
+<rect x="360" y="180" width="260" height="380"
+fill="#121212"/>
+
+<rect x="380" y="180" width="220" height="22"
+fill="url(#anodizedAl)" stroke="#6d6d6d"/>
+
+<rect x="425" y="202" width="70" height="48"
+fill="url(#anodizedAl)" stroke="#7a7a7a"/>
+
+<rect x="447" y="250" width="16" height="170"
+fill="url(#stainless)"/>
+
+<rect x="437" y="420" width="36" height="14"
+fill="url(#anodizedAl)"/>
+
+<polygon points="455,434 447,470 463,470"
+fill="url(#diamondTip)"/>
+
+<rect x="560" y="202" width="16" height="55"
+fill="url(#anodizedAl)"/>
+
+<rect x="545" y="257" width="110" height="70"
+fill="url(#anodizedAl)" stroke="#5f5f5f"/>
+
+<rect x="585" y="327" width="32" height="75"
+fill="url(#stainless)"/>
+
+<circle cx="601" cy="410" r="20"
+fill="url(#anodizedAl)" stroke="#5f5f5f"/>
+
+<rect x="593" y="430" width="16" height="48"
+fill="#6d6d6d"/>
+
+<circle cx="601" cy="486" r="8" fill="#1c1c1c"/>
+<circle cx="601" cy="486" r="4" fill="#4fc3f7" opacity="0.5"/>
+
+<rect x="395" y="500" width="190" height="26"
+fill="url(#stageAl)"/>
+
+<rect x="430" y="526" width="120" height="18"
+fill="#8c8c8c"/>
+
+<rect x="450" y="488" width="80" height="10"
+fill="url(#sampleMat)"/>
+
+<line x1="820" y1="160" x2="780" y2="200"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="830" y="155" fill="#ffffff" font-size="13">Protective Enclosure</text>
+
+<line x1="460" y1="180" x2="460" y2="202"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="460" y="165" text-anchor="middle"
+fill="#ffffff" font-size="13">Indenter Head</text>
+
+<line x1="520" y1="470" x2="463" y2="460"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="525" y="475" fill="#ffffff" font-size="13">Berkovich Indenter</text>
+
+<line x1="720" y1="300" x2="655" y2="290"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="725" y="300" fill="#ffffff" font-size="13">Optical Microscope</text>
+
+<line x1="520" y1="560" x2="520" y2="526"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="520" y="585" text-anchor="middle"
+fill="#ffffff" font-size="13">Sample Stage</text>
+
+<line x1="360" y1="488" x2="450" y2="492"
+stroke="#ffffff" marker-end="url(#arrow)"/>
+<text x="300" y="488" fill="#ffffff" font-size="13">Sample</text>
+
+</svg>

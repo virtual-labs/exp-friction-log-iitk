@@ -1,1 +1,1 @@
-### Aim of the experiment
+To determine the indentation fracture toughness (K<sub>IC</sub>)of a brittle ceramic using the Vickers indentation crack length technique, and to understand how crack size, hardness, and elastic modulus collectively influence crack propagation resistance and failure behavior.
